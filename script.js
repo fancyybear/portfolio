@@ -146,3 +146,58 @@
             }
         `;
         document.head.appendChild(style);
+
+        // Check for saved theme preference or default to dark mode
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        
+        // Apply saved theme on page load
+        if (currentTheme === 'light') {
+            body.classList.add('light-mode');
+            themeIcon.textContent = '☀️';
+            themeText.textContent = 'Light';
+        }
+
+        // Theme toggle event listener
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            
+            if (body.classList.contains('light-mode')) {
+                // Switch to light mode
+                themeIcon.textContent = '☀️';
+                themeText.textContent = 'Light';
+                localStorage.setItem('theme', 'light');
+                
+                // Add transition effect
+                body.style.transition = 'all 0.3s ease';
+            } else {
+                // Switch to dark mode
+                themeIcon.textContent = '🌙';
+                themeText.textContent = 'Dark';
+                localStorage.setItem('theme', 'dark');
+                
+                // Add transition effect
+                body.style.transition = 'all 0.3s ease';
+            }
+            
+            // Remove transition after animation completes
+            setTimeout(() => {
+                body.style.transition = '';
+            }, 300);
+        });
+
+        // Add smooth theme transition to all elements
+        const addThemeTransition = () => {
+            const elementsToTransition = [
+                'nav', '.skill-card', '.project-card', '.photo-item', 
+                '.contact-form', '.category-btn', '.theme-toggle'
+            ];
+            
+            elementsToTransition.forEach(selector => {
+                document.querySelectorAll(selector).forEach(el => {
+                    el.style.transition = 'all 0.3s ease';
+                });
+            });
+        };
+
+        // Apply transitions after page load
+        setTimeout(addThemeTransition, 1000);
