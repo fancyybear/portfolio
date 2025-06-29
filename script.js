@@ -1,4 +1,4 @@
-// Smooth scrolling for navigation links
+ // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -147,6 +147,12 @@
         `;
         document.head.appendChild(style);
 
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        const themeIcon = themeToggle.querySelector('.theme-icon');
+        const themeText = themeToggle.querySelector('.theme-text');
+
         // Check for saved theme preference or default to dark mode
         const currentTheme = localStorage.getItem('theme') || 'dark';
         
@@ -200,8 +206,4 @@
         };
 
         // Apply transitions after page load
-<<<<<<< HEAD
         setTimeout(addThemeTransition, 1000);
-=======
-        setTimeout(addThemeTransition, 1000);
->>>>>>> d38a81c2acf0fc9d6f4b0c174b4ca1bd957f86e3
