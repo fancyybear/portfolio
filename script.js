@@ -200,4 +200,8 @@
         };
 
         // Apply transitions after page load
+<<<<<<< HEAD
         setTimeout(addThemeTransition, 1000);
+=======
+        setTimeout(addThemeTransition, 1000);
+>>>>>>> d38a81c2acf0fc9d6f4b0c174b4ca1bd957f86e3
